@@ -51,18 +51,5 @@ View(exempt_schools)
 
 tested_schools %>% 
   bind_rows(not_tested_schools) %>% 
-  bind_rows(exempt_schools) %>% View()
-
-t <- geocode(tested_schools$schoolAddress[1])
-
-get_address = function(address) {
-  lat_lon = geocode(address)
-  return(tibble(address = address,
-                lon = lat_lon$lon,
-                lat = lat_lon$lat))
-}
-  
-a <- get_address(tested_schools$schoolAddress[1])
-b <- purrr::map2_df(tibble(address=tested_schools$schoolAddress[1:3]), get_address)
-
-
+  bind_rows(exempt_schools) %>% 
+  write_csv('ca_schools_lead_testing_data.csv')
