@@ -13,25 +13,17 @@ tested %>%
 lead_present <- tested %>% 
   filter(XMOD != "<", ALE_Follow_Up_Status == "Pending" | is.na(ALE_Follow_Up_Status)) %>% 
   group_by(SchoolName) %>% 
-  mutate(medianResult = median(RESULT), unit = 'ppb') %>% 
+  mutate(medianResult = median(RESULT), unit = 'ppb', lead = TRUE) %>% 
   select(district = DISTRICT, schoolName = SchoolName, 
-         schoolAddress = SchoolAddress, medianResult, unit) %>% 
+         schoolAddress = SchoolAddress, medianResult, unit, lead) %>% 
   unique() %>% 
   ungroup()
 
-schools_with_lead <- lead_present %>% 
-  select(schoolName, schoolAddress) %>% 
-  unique() %>% 
-  mutate(lead = TRUE)
-
-
-schools <- tested %>% 
+tested_schools <- tested %>% 
   select(district = DISTRICT, schoolName = SchoolName, schoolAddress = SchoolAddress) %>% 
   unique() %>% 
-  left_join(schools_with_lead) %>% 
-  mutate(status = 'tested')
-
-
+  left_join(lead_present) %>% 
+  mutate(status = 'tested', lead = ifelse(is.na(lead), FALSE, lead))
 
 un_tested <- read_excel('data-raw/SchoolsUnsampled.xlsx')
 glimpse(un_tested)
