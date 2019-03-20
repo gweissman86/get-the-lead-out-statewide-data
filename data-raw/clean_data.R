@@ -20,6 +20,24 @@ lead_present <- tested %>%
   unique() %>% 
   ungroup()
 
+lead_present_max <- tested %>% 
+  filter(XMOD != "<", ALE_Follow_Up_Status == "Pending" | is.na(ALE_Follow_Up_Status)) %>% 
+  group_by(SchoolName) %>% 
+  mutate(medianResult = max(RESULT), unit = 'ppb', lead = TRUE) %>% 
+  select(district = DISTRICT, schoolName = SchoolName, 
+         schoolAddress = SchoolAddress, medianResult, unit, lead) %>% 
+  unique() %>% 
+  ungroup()
+
+lead_present_max %>% pull(medianResult) %>% summary()
+lead_present %>% pull(medianResult) %>% summary()
+mutate(lead_present_max, mode = 'max') %>% 
+  bind_rows(mutate(lead_present_max, mode = 'med')) %>% 
+  ggplot(aes(y = medianResult, x = mode)) +
+  geom_boxplot()
+
+# not a big difference between max and median, median is more fair for time considerations
+
 tested_schools <- tested %>% 
   select(district = DISTRICT, schoolName = SchoolName, schoolAddress = SchoolAddress) %>% 
   unique() %>% 
@@ -85,13 +103,61 @@ district_lookup <- dirty_district %>%
   filter(is.na(in_cde)) %>% 
   select(-in_cde)
 
-all_schools %>% 
+cleaned_data <- all_schools %>% 
   left_join(district_lookup) %>% 
   mutate(district = ifelse(is.na(match), district, match),
          district = ifelse(is.na(district) | district == 'private', 'Private', district)) %>% 
   select(-match) %>%
-  left_join(geo_coded) %>% 
-  write_csv('ca_schools_lead_testing_data.csv')
+  left_join(geo_coded)
+
+# % of schools who have tested out of those required to test (so exempting exempt schools). 
+tested <- cleaned_data %>% 
+  filter(status != 'exempt') %>% 
+  select(schoolName, status) %>% 
+  unique() %>% 
+  group_by(status) %>% 
+  summarise(count = n()) %>% 
+  pull(count)
+
+tested[2] / (tested[1] + tested[2]) # prop tested
+
+# Also great to know the % and number of schools and school districts that found lead over 5 PPB.
+lead_found <- cleaned_data %>% 
+  select(schoolName, lead) %>% 
+  unique() %>%
+  filter(lead) %>% 
+  summarise(count = n()) %>% 
+  pull(count)
+
+lead_found / (tested[1] + tested[2]) 
+
+district_lead_found <- cleaned_data %>% 
+  select(district, lead) %>% 
+  unique() %>% 
+  filter(lead) %>% 
+  summarise(count = n()) %>% 
+  pull(count)
+
+num_districts <- cleaned_data %>% 
+  select(district) %>% 
+  unique() %>% 
+  summarise(count = n()) %>% 
+  pull(count)
+
+# confirm that all districts have at least one non exempt school
+cleaned_data %>% 
+  select(district, status) %>% 
+  group_by(district, status) %>% 
+  mutate(count = n()) %>% 
+  unique() %>% 
+  spread(status, count) %>% 
+  filter(is.na(exempt), is.na(tested), is.na(`not tested`)) %>% View
+
+district_lead_found / num_districts
+
+cleaned_data %>% 
+  write_csv('ca_schools_lead_testing_data.csv') 
+  
 
 # check repeat school names
 repeat_names <- all_schools %>% 
