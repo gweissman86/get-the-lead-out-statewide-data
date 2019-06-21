@@ -1,8 +1,8 @@
 library(tidyverse)
 library(readxl)
-library(ggmap)
 
-tested <- read_excel('data-raw/MonthlyPostingMarch.xlsx', skip = 1)
+# tested <- read_excel('data-raw/MonthlyPostingMarch.xlsx', skip = 1)
+tested <- read_excel('data-raw/monthlypostingjune.xlsx', skip = 1)
 glimpse(tested)
 
 # how many exceed 5 ppb? what is the follow up status?
