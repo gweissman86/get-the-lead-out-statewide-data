@@ -110,6 +110,29 @@ cleaned_data <- all_schools %>%
   select(-match) %>%
   left_join(geo_coded)
 
+# updates from june data
+now_tested <- cleaned_data %>% 
+  group_by(schoolName, schoolAddress, status) %>% 
+  summarise(count = n()) %>% 
+  spread(status, count) %>% 
+  mutate(tot = sum(`not tested`, tested, na.rm = TRUE)) %>% 
+  filter(tot == 2) %>% 
+  select(schoolName, schoolAddress) %>% 
+  mutate(new_status = 'tested')
+
+still_not_tested <- cleaned_data %>% 
+  filter(status == 'not tested') %>% 
+  left_join(now_tested) %>% 
+  filter(is.na(new_status)) %>% 
+  select(-new_status)
+
+cleaned_data <- cleaned_data %>% 
+  filter(status != 'not tested') %>% 
+  bind_rows(still_not_tested) 
+
+cleaned_data %>% 
+  write_csv('ca_schools_lead_testing_data.csv') 
+
 # % of schools who have tested out of those required to test (so exempting exempt schools). 
 tested <- cleaned_data %>% 
   filter(status != 'exempt') %>% 
@@ -144,6 +167,8 @@ num_districts <- cleaned_data %>%
   summarise(count = n()) %>% 
   pull(count)
 
+district_lead_found / num_districts
+
 # confirm that all districts have at least one non exempt school
 cleaned_data %>% 
   select(district, status) %>% 
@@ -152,28 +177,6 @@ cleaned_data %>%
   unique() %>% 
   spread(status, count) %>% 
   filter(is.na(exempt), is.na(tested), is.na(`not tested`)) 
-
-district_lead_found / num_districts
-  
-now_tested <- cleaned_data %>% 
-  group_by(schoolName, schoolAddress, status) %>% 
-  summarise(count = n()) %>% 
-  spread(status, count) %>% 
-  mutate(tot = sum(`not tested`, tested, na.rm = TRUE)) %>% 
-  filter(tot == 2) %>% 
-  select(schoolName, schoolAddress) %>% 
-  mutate(new_status = 'tested')
-
-still_not_tested <- cleaned_data %>% 
-  filter(status == 'not tested') %>% 
-  left_join(now_tested) %>% 
-  filter(is.na(new_status)) %>% 
-  select(-new_status)
-
-cleaned_data %>% 
-  filter(status != 'not tested') %>% 
-  bind_rows(still_not_tested) %>% 
-  write_csv('ca_schools_lead_testing_data.csv') 
 
   # check repeat school names
 repeat_names <- all_schools %>% 
