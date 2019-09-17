@@ -3,7 +3,8 @@ library(readxl)
 library(stringr)
 
 # tested <- read_excel('data-raw/MonthlyPostingMarch.xlsx', skip = 1)
-tested <- read_excel('data-raw/monthlypostingjune.xlsx', skip = 1)
+# tested <- read_excel('data-raw/monthlypostingjune.xlsx', skip = 1)
+tested <- read_excel('data-raw/monthlyposting_september2019.xlsx', skip = 1)
 glimpse(tested)
 
 # how many exceed 5 ppb? what is the follow up status?
@@ -110,7 +111,7 @@ cleaned_data <- all_schools %>%
   select(-match) %>%
   left_join(geo_coded)
 
-# updates from june data
+# updates from september data
 now_tested <- cleaned_data %>% 
   group_by(schoolName, schoolAddress, status) %>% 
   summarise(count = n()) %>% 
@@ -131,6 +132,7 @@ cleaned_data <- cleaned_data %>%
   bind_rows(still_not_tested) 
 
 cleaned_data %>% 
+  arrange(district, schoolName) %>% 
   write_csv('ca_schools_lead_testing_data.csv') 
 
 # % of schools who have tested out of those required to test (so exempting exempt schools). 
