@@ -1,9 +1,11 @@
 library(tidyverse)
 library(readxl)
-library(ggmap)
 library(stringr)
 
-tested <- read_excel('data-raw/MonthlyPostingMarch.xlsx', skip = 1)
+# tested <- read_excel('data-raw/MonthlyPostingMarch.xlsx', skip = 1)
+# tested <- read_excel('data-raw/monthlypostingjune.xlsx', skip = 1)
+# tested <- read_excel('data-raw/monthlyposting_september2019.xlsx', skip = 1)
+tested <- read_excel('data-raw/monthlyposting_october2019.xlsx', skip = 1)
 glimpse(tested)
 
 # how many exceed 5 ppb? what is the follow up status?
@@ -12,31 +14,13 @@ tested %>%
   summarise(count = n())
 
 lead_present <- tested %>% 
-  filter(XMOD != "<", ALE_Follow_Up_Status == "Pending" | is.na(ALE_Follow_Up_Status)) %>% 
+  filter(XMOD != "<") %>% 
   group_by(SchoolName) %>% 
-  mutate(medianResult = median(RESULT), unit = 'ppb', lead = TRUE) %>% 
+  mutate(maxResult = max(RESULT), unit = 'ppb', lead = TRUE) %>% 
   select(district = DISTRICT, schoolName = SchoolName, 
-         schoolAddress = SchoolAddress, medianResult, unit, lead) %>% 
+         schoolAddress = SchoolAddress, maxResult, unit, lead) %>% 
   unique() %>% 
   ungroup()
-
-lead_present_max <- tested %>% 
-  filter(XMOD != "<", ALE_Follow_Up_Status == "Pending" | is.na(ALE_Follow_Up_Status)) %>% 
-  group_by(SchoolName) %>% 
-  mutate(medianResult = max(RESULT), unit = 'ppb', lead = TRUE) %>% 
-  select(district = DISTRICT, schoolName = SchoolName, 
-         schoolAddress = SchoolAddress, medianResult, unit, lead) %>% 
-  unique() %>% 
-  ungroup()
-
-lead_present_max %>% pull(medianResult) %>% summary()
-lead_present %>% pull(medianResult) %>% summary()
-mutate(lead_present_max, mode = 'max') %>% 
-  bind_rows(mutate(lead_present_max, mode = 'med')) %>% 
-  ggplot(aes(y = medianResult, x = mode)) +
-  geom_boxplot()
-
-# not a big difference between max and median, median is more fair for time considerations
 
 tested_schools <- tested %>% 
   select(district = DISTRICT, schoolName = SchoolName, schoolAddress = SchoolAddress) %>% 
@@ -53,8 +37,8 @@ glimpse(un_tested)
 
 not_tested_schools <- un_tested %>% 
   mutate(schoolAddress = paste(Street, City, 'CA', Zip, sep = ' '),
-         medianResult = NA, unit = NA, lead = NA, status = "not tested") %>% 
-  select(district = District, schoolName = School, schoolAddress, medianResult, 
+         maxResult = NA, unit = NA, lead = NA, status = "not tested") %>% 
+  select(district = District, schoolName = School, schoolAddress, maxResult, 
          unit, lead, status)
 View(not_tested_schools)
 
@@ -62,9 +46,9 @@ exempt <- read_excel('data-raw/exemption_forms.xlsx')
 glimpse(exempt)
 
 exempt_schools <- exempt %>% 
-  mutate(medianResult = NA, unit = NA, lead = NA, status = "exempt") %>% 
+  mutate(maxResult = NA, unit = NA, lead = NA, status = "exempt") %>% 
   select(district = `School District`, schoolName = Name, schoolAddress = Address, 
-         medianResult, unit, lead, status)
+         maxResult, unit, lead, status)
 
 View(exempt_schools)
 
@@ -72,6 +56,9 @@ all_schools <- tested_schools %>%
   bind_rows(not_tested_schools) %>% 
   bind_rows(exempt_schools)
 
+
+exempt_schools %>% 
+  filter(schoolName == 'Jensen Ranch Elementary')
 # geo coding from daniel and victoria
 geo_coded <- read_csv('data-raw/ca_schools_lead_testing_data_geocoded.csv') %>%
   select(schoolAddress, city, county, latitude, longitude) %>% 
@@ -110,7 +97,33 @@ cleaned_data <- all_schools %>%
   select(-match) %>%
   left_join(geo_coded)
 
-# % of schools who have tested out of those required to test (so exempting exempt schools). 
+# updates from september data
+now_tested <- cleaned_data %>% 
+  group_by(schoolName, schoolAddress, status) %>% 
+  summarise(count = n()) %>% 
+  spread(status, count) %>% 
+  mutate(tot = sum(`not tested`, tested, na.rm = TRUE)) %>% 
+  filter(tot == 2) %>% 
+  select(schoolName, schoolAddress) %>% 
+  mutate(new_status = 'tested')
+
+still_not_tested <- cleaned_data %>% 
+  filter(status == 'not tested') %>% 
+  left_join(now_tested) %>% 
+  filter(is.na(new_status)) %>% 
+  select(-new_status)
+
+cleaned_data <- cleaned_data %>% 
+  filter(status != 'not tested') %>% 
+  bind_rows(still_not_tested) 
+
+cleaned_data %>% 
+  arrange(district, schoolName) %>% 
+  mutate(county = ifelse(county == 'SF', 'San Francisco County', county)) %>% names
+  write_csv('ca_schools_lead_testing_data.csv') 
+
+
+    # % of schools who have tested out of those required to test (so exempting exempt schools). 
 tested <- cleaned_data %>% 
   filter(status != 'exempt') %>% 
   select(schoolName, status) %>% 
@@ -144,6 +157,8 @@ num_districts <- cleaned_data %>%
   summarise(count = n()) %>% 
   pull(count)
 
+district_lead_found / num_districts
+
 # confirm that all districts have at least one non exempt school
 cleaned_data %>% 
   select(district, status) %>% 
@@ -151,15 +166,9 @@ cleaned_data %>%
   mutate(count = n()) %>% 
   unique() %>% 
   spread(status, count) %>% 
-  filter(is.na(exempt), is.na(tested), is.na(`not tested`)) %>% View
+  filter(is.na(exempt), is.na(tested), is.na(`not tested`)) 
 
-district_lead_found / num_districts
-
-cleaned_data %>% 
-  write_csv('ca_schools_lead_testing_data.csv') 
-  
-
-# check repeat school names
+  # check repeat school names
 repeat_names <- all_schools %>% 
   select(schoolName, schoolAddress) %>% 
   unique() %>% 
@@ -175,4 +184,16 @@ all_schools %>%
   left_join(repeat_names) %>% 
   filter(duplicate) %>% View
 
+#la data
+la <- read_excel('data-raw/LAUSD_Drinking_Water_Lead_Sample_Data_Details_-_3-18-19.xlsx')
+glimpse(la)
+table(la$`Current Status`)
+la %>% 
+  filter(`Current Status` == 'ACTIVE') %>% 
+  select(schoolName = `School Name`, `Most Recent 1st Draw (ppb)`, `Most Recent 2nd Draw (ppb)`) %>% 
+  gather(draw, ppb, -schoolName) %>% 
+  group_by(schoolName) %>% 
+  summarise(ppb = median(ppb), count = n()) %>% 
+  View
 
+glimpse(cleaned_data)
