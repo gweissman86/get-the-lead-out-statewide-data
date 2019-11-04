@@ -14,7 +14,7 @@ tested %>%
   summarise(count = n())
 
 lead_present <- tested %>% 
-  filter(XMOD != "<", ALE_Follow_Up_Status == "Pending" | is.na(ALE_Follow_Up_Status)) %>% 
+  filter(XMOD != "<") %>% 
   group_by(SchoolName) %>% 
   mutate(maxResult = max(RESULT), unit = 'ppb', lead = TRUE) %>% 
   select(district = DISTRICT, schoolName = SchoolName, 
@@ -56,6 +56,9 @@ all_schools <- tested_schools %>%
   bind_rows(not_tested_schools) %>% 
   bind_rows(exempt_schools)
 
+
+exempt_schools %>% 
+  filter(schoolName == 'Jensen Ranch Elementary')
 # geo coding from daniel and victoria
 geo_coded <- read_csv('data-raw/ca_schools_lead_testing_data_geocoded.csv') %>%
   select(schoolAddress, city, county, latitude, longitude) %>% 
@@ -116,9 +119,11 @@ cleaned_data <- cleaned_data %>%
 
 cleaned_data %>% 
   arrange(district, schoolName) %>% 
+  mutate(county = ifelse(county == 'SF', 'San Francisco County', county)) %>% names
   write_csv('ca_schools_lead_testing_data.csv') 
 
-# % of schools who have tested out of those required to test (so exempting exempt schools). 
+
+    # % of schools who have tested out of those required to test (so exempting exempt schools). 
 tested <- cleaned_data %>% 
   filter(status != 'exempt') %>% 
   select(schoolName, status) %>% 
