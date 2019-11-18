@@ -5,7 +5,8 @@ library(stringr)
 # tested <- read_excel('data-raw/MonthlyPostingMarch.xlsx', skip = 1)
 # tested <- read_excel('data-raw/monthlypostingjune.xlsx', skip = 1)
 # tested <- read_excel('data-raw/monthlyposting_september2019.xlsx', skip = 1)
-tested <- read_excel('data-raw/monthlyposting_october2019.xlsx', skip = 1)
+# tested <- read_excel('data-raw/monthlyposting_october2019.xlsx', skip = 1)
+tested <- read_excel('data-raw/monthlyposting_november2019.xlsx', skip = 1)
 glimpse(tested)
 
 # how many exceed 5 ppb? what is the follow up status?
@@ -119,7 +120,7 @@ cleaned_data <- cleaned_data %>%
 
 cleaned_data %>% 
   arrange(district, schoolName) %>% 
-  mutate(county = ifelse(county == 'SF', 'San Francisco County', county)) %>% names
+  mutate(county = ifelse(county == 'SF', 'San Francisco County', county)) %>% 
   write_csv('ca_schools_lead_testing_data.csv') 
 
 

@@ -1266,9 +1266,10 @@ Claremont Unified,San Antonio High (Continuation),125 West San Jose Ave Claremon
 Claremont Unified,Sumner Elementary,1770 Sumner Avenue Claremont CA 91711-3031,NA,NA,NA,not tested,Claremont,Los Angeles County,34.1153591428571,-117.741946285714
 Claremont Unified,Sycamore Elementary,225 West Eighth Street Claremont CA 91711-4317,NA,NA,NA,not tested,NA,NA,NA,NA
 Claremont Unified,Vista del Valle Elementary,550 Vista Drive Claremont CA 91711-5120,NA,NA,NA,not tested,Claremont,Los Angeles County,34.0866642692308,-117.721672230769
-Cloverdale Unified,Cloverdale High and Adult,509 North Cloverdale Blvd Cloverdale CA 95425-3324,NA,NA,NA,not tested,Cloverdale,Sonoma County,38.8110327035349,-123.021371720447
-Cloverdale Unified,Jefferson Elementary,315 North Street Cloverdale CA 95425-3251,NA,NA,NA,not tested,Cloverdale,Sonoma County,38.8117833938797,-123.024802235331
-Cloverdale Unified,Washington,129 South Washington Street Cloverdale CA 95425-3620,NA,NA,NA,not tested,Cloverdale,Sonoma County,38.8028208853119,-123.018398162469
+Cloverdale Unified,"Cloverdale Head Start, Johanna Ecchols-Hansen, Sonoma 4cs Preschool, Eagle Creek",322 N Washington St Cloverdale CA 95425,NA,NA,FALSE,tested,NA,NA,NA,NA
+Cloverdale Unified,Cloverdale High and Adult,509 North Cloverdale Blvd Cloverdale CA 95425-3324,NA,NA,FALSE,tested,Cloverdale,Sonoma County,38.8110327035349,-123.021371720447
+Cloverdale Unified,Jefferson Elementary,315 North Street Cloverdale CA 95425-3251,NA,NA,FALSE,tested,Cloverdale,Sonoma County,38.8117833938797,-123.024802235331
+Cloverdale Unified,Washington,129 South Washington Street Cloverdale CA 95425-3620,NA,NA,FALSE,tested,Cloverdale,Sonoma County,38.8028208853119,-123.018398162469
 Clovis Unified,Alta Sierra Intermediate,380 West Teague Avenue Clovis CA 93611-8332,NA,NA,FALSE,tested,Clovis,Fresno County,36.8599167337821,-119.718405204131
 Clovis Unified,Buchanan High,1560 North Minnewawa Avenue Clovis CA 93611-7698,NA,NA,FALSE,tested,Clovis,Fresno County,36.8468604,-119.7110909
 Clovis Unified,Bud Rank Elementary,3650 Powers Avenue Clovis CA 93619-5900,NA,NA,FALSE,tested,Clovis,Fresno County,36.8627185948239,-119.641996679759
@@ -1554,7 +1555,7 @@ Cotati-Rohnert Park Unified,Monte Vista Elementary,1400 Magnolia Avenue Rohnert 
 Cotati-Rohnert Park Unified,Rancho Cotate High,5450 Snyder Lane Rohnert Park CA 94928-2906,NA,NA,FALSE,tested,Rohnert Park,Sonoma County,38.3423384982918,-122.685586137046
 Cotati-Rohnert Park Unified,Richard Crane Elementary,1290 Southwest Blvd Rohnert Park CA 94928,NA,NA,FALSE,tested,NA,NA,NA,NA
 Cotati-Rohnert Park Unified,Rohnert Park Educational Center,5860 Labath Ave Rohnert Park  CA 94928,NA,NA,FALSE,tested,NA,NA,NA,NA
-Cotati-Rohnert Park Unified,Technology High,1801 East Cotati Avenue Rohnert Park CA 94928-3613,NA,NA,NA,not tested,Rohnert Park,Sonoma County,38.33908395,-122.67538218386
+Cotati-Rohnert Park Unified,Technology High,1801 East Cotati Avenue Rohnert Park CA 94928-3613,NA,NA,FALSE,tested,Rohnert Park,Sonoma County,38.33908395,-122.67538218386
 Cotati-Rohnert Park Unified,Technology Middle,7165 Burton Avenue Rohnert Park CA 94928-3316,NA,NA,FALSE,tested,NA,NA,NA,NA
 Cotati-Rohnert Park Unified,Thomas Page Academy,1075 Madrone Avenue Cotati CA 94931-5130,NA,NA,NA,not tested,Cotati,Sonoma County,38.3291951583873,-122.728339099532
 Cotati-Rohnert Park Unified,University Elementary at La Fiesta,8511 Liman Way Rohnert Park CA 94928-4686,NA,NA,FALSE,tested,NA,NA,NA,NA
@@ -1634,7 +1635,7 @@ Cutler-Orosi Joint Unified,Palm Elementary,12915 Avenue 419 Orosi CA 93647-1916,
 Cutten Elementary,Cutten Elementary,4182 Walnut Drive Eureka CA 95503-6223,NA,NA,FALSE,tested,Eureka,Humboldt County,40.7665108181818,-124.143080454545
 Cutten Elementary,Ridgewood Elementary,2060 Ridgewood Drive Eureka CA 95503-6687,5.6,ppb,TRUE,tested,NA,NA,NA,NA
 Cuyama Joint Unified,Cuyama Valley High,4500 Highway 166 New Cuyama CA 93254-9720,7.8,ppb,TRUE,tested,NA,NA,NA,NA
-Cuyama Joint Unified,Sierra Madre High (Continuation),4500 Highway 166 C New Cuyama CA 93254-9720,19,ppb,TRUE,tested,NA,NA,NA,NA
+Cuyama Joint Unified,Sierra Madre High (Continuation),4500 Highway 166 C New Cuyama CA 93254-9720,NA,NA,NA,not tested,NA,NA,NA,NA
 Cypress Elementary,A. E. Arnold Elementary,9281 Denni Street Cypress CA 90630-2724,120,ppb,TRUE,tested,Cypress,Orange County,33.8247045904059,-118.054602249146
 Cypress Elementary,Clara J. King Elementary,8710 Moody Street Cypress CA 90630-2220,NA,NA,FALSE,tested,Cypress,Orange County,33.8148857,-118.0455104
 Cypress Elementary,Frank Vessels Elementary,5900 Cathy Ave Cypress CA 90630-4615,9.9,ppb,TRUE,tested,Cypress,Orange County,33.81166,-118.030091
@@ -2861,7 +2862,7 @@ Hanford Elementary,Hamilton Elementary,1269 Leland Way Hanford CA 93230,6,ppb,TR
 Hanford Elementary,Hanford Elementary Community Day,601 West Florinda St Hanford CA 93230-3628,NA,NA,NA,not tested,Hanford,Kings County,36.3347712019861,-119.654411679748
 Hanford Elementary,Hanford Elementary School District Service Facility Kitchen,924 Katie Hammond Lane Hanford CA 93239,NA,NA,FALSE,tested,NA,NA,NA,NA
 Hanford Elementary,Jefferson Charter Academy,511 West Malone Street Hanford CA 93230-2827,12,ppb,TRUE,tested,Hanford,Kings County,36.3389150753317,-119.652354317522
-Hanford Elementary,John F. Kennedy Junior High,1000 East Florinda Street Hanford CA 93232,130,ppb,TRUE,tested,Hanford,Kings County,36.334851,-119.63613
+Hanford Elementary,John F. Kennedy Junior High,1000 East Florinda Street Hanford CA 93232,18,ppb,TRUE,tested,Hanford,Kings County,36.334851,-119.63613
 Hanford Elementary,Joseph M. Simas,1875 Fitzgerald Hanford CA 93230-7906,2000,ppb,TRUE,tested,Hanford,Kings County,36.3519256,-119.6684581
 Hanford Elementary,Lee Richmond Elementary,939 Katie Hammond Street Hanford CA 93230-3158,92,ppb,TRUE,tested,NA,NA,NA,NA
 Hanford Elementary,Lincoln Elementary,832 South Harris Street Hanford CA 93230-5436,32,ppb,TRUE,tested,Hanford,Kings County,36.3162291666667,-119.642705
@@ -3310,7 +3311,7 @@ Knights Ferry Elementary,Knights Ferry Elementary,12726 Dent Street Knights Ferr
 Knightsen Elementary,Old River Elementary School,30 Learning Lane Brentwood CA 94513,NA,NA,NA,not tested,NA,NA,NA,NA
 Konocti Unified,Burns Valley,3620 Pine Street Clearlake CA 95422-6420,NA,NA,FALSE,tested,NA,NA,NA,NA
 Konocti Unified,Carle (William C.) High (Continuation),9345 Winchester Street Lower Lake CA 95457-0309,NA,NA,FALSE,tested,NA,Lake County,38.9149917774496,-122.603967835763
-Konocti Unified,East Lake,13050 High Valley Road Clearlake Oaks CA 95423-0577,NA,NA,NA,not tested,NA,Lake County,39.028546,-122.67223
+Konocti Unified,East Lake,13050 High Valley Road Clearlake Oaks CA 95423-0577,NA,NA,FALSE,tested,NA,Lake County,39.028546,-122.67223
 Konocti Unified,Highlands Academy,13050 High Valley Rd Clearlake Oaks CA 95423-0577,NA,NA,NA,not tested,NA,Lake County,39.028546,-122.67223
 Konocti Unified,Konocti Education Center,15850-A Dam Road Extention Clearlake CA 95422,NA,NA,FALSE,tested,NA,NA,NA,NA
 Konocti Unified,Lower Lake Elementary,9240 Lake Street Lower Lake CA 95457-0719,NA,NA,FALSE,tested,NA,Lake County,38.918346,-122.610154
@@ -6788,16 +6789,16 @@ Newcastle Elementary,Newcastle Charter,8951 Valley View Drive Newcastle CA 95658
 Newcastle Elementary,Newcastle Elementary,8951 Valley View Drive Newcastle CA 95658-9723,NA,NA,NA,not tested,NA,Placer County,38.8718218477375,-121.135698743114
 Newcastle Elementary,Onorato Educational Center,925 Kentucky Greens Way Newcastle CA 95658,NA,NA,NA,not tested,NA,Placer County,38.8682233,-121.1388107
 Newcastle Elementary,Rocklin Academy Gateway,6550 Lonetree Boulevard Rocklin CA 95765-5874,NA,NA,FALSE,tested,Rocklin,Placer County,38.8040556563923,-121.293696807282
-Newhall,Dr. J. Michael McGrath Elementary,21501 Deputy Jake Way Newhall CA 91321-4687,NA,NA,NA,not tested,NA,NA,NA,NA
-Newhall,Meadows Elementary,25577 North Fedala Road Valencia CA 91355-2536,NA,NA,NA,not tested,Santa Clarita,Los Angeles County,34.39133415,-118.554931599405
-Newhall,Newhall Elementary,24607 North Walnut Street Newhall CA 91321-1751,NA,NA,NA,not tested,NA,NA,NA,NA
-Newhall,Oak Hills Elementary,26730 Old Rock Road Valencia CA 91381-0775,NA,NA,NA,not tested,NA,NA,NA,NA
-Newhall,Old Orchard Elementary,25141 North Avenida Rondel Valencia CA 91355-3205,NA,NA,NA,not tested,NA,NA,NA,NA
-Newhall,Peachland Avenue Elementary,24800 Peachland Avenue Newhall CA 91321-3430,NA,NA,NA,not tested,Santa Clarita,Los Angeles County,34.3744862941935,-118.545625081887
-Newhall,Pico Canyon Elementary,25255 Pico Canyon Road Stevenson Ranch CA 91381-1658,NA,NA,NA,not tested,NA,Los Angeles County,34.3790519,-118.5664991
-Newhall,Stevenson Ranch Elementary,25820 North Carroll Lane Stevenson Ranch CA 91381-1100,NA,NA,NA,not tested,NA,NA,NA,NA
+Newhall,Dr. J. Michael McGrath Elementary,21501 Deputy Jake Way Newhall CA 91321-4687,NA,NA,FALSE,tested,NA,NA,NA,NA
+Newhall,Meadows Elementary,25577 North Fedala Road Valencia CA 91355-2536,NA,NA,FALSE,tested,Santa Clarita,Los Angeles County,34.39133415,-118.554931599405
+Newhall,Newhall Elementary,24607 North Walnut Street Newhall CA 91321-1751,NA,NA,FALSE,tested,NA,NA,NA,NA
+Newhall,Oak Hills Elementary,26730 Old Rock Road Valencia CA 91381-0775,NA,NA,FALSE,tested,NA,NA,NA,NA
+Newhall,Old Orchard Elementary,25141 North Avenida Rondel Valencia CA 91355-3205,NA,NA,FALSE,tested,NA,NA,NA,NA
+Newhall,Peachland Avenue Elementary,24800 Peachland Avenue Newhall CA 91321-3430,NA,NA,FALSE,tested,Santa Clarita,Los Angeles County,34.3744862941935,-118.545625081887
+Newhall,Pico Canyon Elementary,25255 Pico Canyon Road Stevenson Ranch CA 91381-1658,NA,NA,FALSE,tested,NA,Los Angeles County,34.3790519,-118.5664991
+Newhall,Stevenson Ranch Elementary,25820 North Carroll Lane Stevenson Ranch CA 91381-1100,NA,NA,FALSE,tested,NA,NA,NA,NA
 Newhall,Valencia Valley Elementary,23601 Carrizo Drive Valencia CA 91355-2182,38,ppb,TRUE,tested,Santa Clarita,Los Angeles County,34.407669,-118.544291
-Newhall,Wiley Canyon Elementary,24240 La Glorita Circle Newhall CA 91321-2304,NA,NA,NA,not tested,Santa Clarita,Los Angeles County,34.3765025267897,-118.559843023564
+Newhall,Wiley Canyon Elementary,24240 La Glorita Circle Newhall CA 91321-2304,NA,NA,FALSE,tested,Santa Clarita,Los Angeles County,34.3765025267897,-118.559843023564
 Newman-Crows Landing Unified,Bonita Elementary,425 Fink Road Crows Landing CA 95313-9771,NA,NA,NA,not tested,NA,Stanislaus County,37.3914276488294,-121.076685648829
 Newman-Crows Landing Unified,Hunt Elementary,907 R Street Newman CA 95360-1124,6.49,ppb,TRUE,tested,NA,Stanislaus County,37.3195973,-121.029849370919
 Newman-Crows Landing Unified,Hurd Barrington Elementary,838 Eucalyptus Avenue Newman CA 95360-9503,NA,NA,FALSE,tested,NA,Stanislaus County,37.32307225,-121.014481934676
@@ -7936,6 +7937,7 @@ Princeton Joint Unified,Princeton Junior-Senior High,473 State Street Princeton 
 Private,A Better Chance / California Autism Foundation,4138 Lakeside Drive Richmond CA 94806,NA,NA,FALSE,tested,Richmond,Contra Costa County,37.9887870943446,-122.328879671735
 Private,Able Charter School,6515 Inglewood Ave Stockton CA 95207,NA,NA,FALSE,tested,NA,NA,NA,NA
 Private,Achiever Christian,540 Sands Drive San Jose CA 95125,6.1,ppb,TRUE,tested,San José,Santa Clara County,37.2880588501677,-121.874335093244
+Private,Action Day Primary Plus,333 Eunice Ave Mountain View CA 94040,NA,NA,FALSE,tested,NA,NA,NA,NA
 Private,Action Day Primary Plus - Allen,5845 Allen Ave San Jose CA 95123,7.4,ppb,TRUE,tested,San José,Santa Clara County,37.2451031521739,-121.856177173913
 Private,Action Day Primary Plus - Amber,3500 Amber Dr San Jose CA 95117,NA,NA,FALSE,tested,San José,Santa Clara County,37.304731,-121.958633
 Private,Action Day Primary Plus - West Valley Middle School,801 Hibiscus Ln San Jose CA 95117,NA,NA,FALSE,tested,San José,Santa Clara County,37.31334,-121.972194
@@ -8054,7 +8056,9 @@ Private,French American School of Silicon Valley,1522 Lewiston Drive Sunnyvale C
 Private,Fresh Start Charter School,4476 Crenshaw Blvd Los Angeles CA 90043,NA,NA,FALSE,tested,NA,NA,NA,NA
 Private,Fusion Charter,NA,10.6,ppb,TRUE,tested,NA,Trøndelag,64.5731537,11.5280364395482
 Private,G.H.S. Academy,1060 Suncast Lane El Dorado Hills CA 95762,NA,NA,FALSE,tested,NA,NA,NA,NA
+Private,German Int'l School of Silicon Valley,310 Easy Street Mountain View CA 94043,NA,NA,FALSE,tested,NA,NA,NA,NA
 Private,Good Shepherd Catholic School,2727 Mattison Lane Santa Cruz CA 95605,NA,NA,FALSE,tested,NA,NA,NA,NA
+Private,"Google Childrens Center, The Woods",325 Gladys Mountain View CA 94043,NA,NA,FALSE,tested,NA,NA,NA,NA
 Private,Grace Lutheran School,5172 McFadden Avenue Huntington Beach CA 92649,NA,NA,FALSE,tested,NA,NA,NA,NA
 Private,Growing Light Montessori School of Kensington,52 Arlington Avenue Kensington CA 94707,5.2,ppb,TRUE,tested,NA,NA,NA,NA
 Private,"Hamlin, The",2120 Broadway San Francisco CA 94115,7.1,ppb,TRUE,tested,NA,NA,NA,NA
@@ -9569,7 +9573,7 @@ San Jose Unified,Bret Harte Middle,7050 Bret Harte Drive San Jose CA 95120-3205,
 San Jose Unified,Broadway High,4825 Speak Lane San Jose CA 95118-3769,NA,NA,FALSE,tested,San José,Santa Clara County,37.2612624,-121.8798853338
 San Jose Unified,Canoas Elementary,880 Wren Drive San Jose CA 95125-2950,7.5,ppb,TRUE,tested,San José,Santa Clara County,37.2846416026873,-121.876335026552
 San Jose Unified,Castillero Middle,6384 Leyland Park Drive San Jose CA 95120-4516,NA,NA,FALSE,tested,San José,Santa Clara County,37.2210324415723,-121.881753389025
-San Jose Unified,Downtown College Preparatory,1402 Monterey Rd San Jose CA 95110,NA,NA,NA,not tested,San José,Santa Clara County,37.3163961894701,-121.873621541661
+San Jose Unified,Downtown College Preparatory,1402 Monterey Rd San Jose CA 95110,NA,NA,FALSE,tested,San José,Santa Clara County,37.3163961894701,-121.873621541661
 San Jose Unified,Downtown College Preparatory Middle,1155 East Julian Street San Jose CA 95116-1005,NA,NA,NA,not tested,San José,Santa Clara County,37.3510843516163,-121.871275248205
 San Jose Unified,Empire Gardens Elementary,1060 East Empire Street San Jose CA 95112-1715,NA,NA,FALSE,tested,San José,Santa Clara County,37.3545936578636,-121.876181227877
 San Jose Unified,Ernesto Galarza Elementary,1610 Bird Avenue San Jose CA 95125-1821,6.5,ppb,TRUE,tested,San José,Santa Clara County,37.303716789498,-121.887008179368
@@ -10233,7 +10237,7 @@ Scotia Union School District,Scotia Union School District,417 Church Street (PO 
 Scott Valley Unified,Etna Community Day,220 Collier Way Etna CA 96027-9576,NA,NA,NA,not tested,Etna,Siskiyou County,41.459379,-122.895668
 Scott Valley Unified,Etna Elementary,220 Collier Wy Etna CA 96027-0490,86.1,ppb,TRUE,tested,Etna,Siskiyou County,41.459379,-122.895668
 Scott Valley Unified,Etna Union High,400 Howell Avenue Etna CA 96027-0721,NA,NA,FALSE,tested,Etna,Siskiyou County,41.459376,-122.898418
-Scott Valley Unified,Fort Jones Elementary,11501 Mathews Street Fort Jones CA 96032,NA,NA,NA,not tested,Fort Jones,Siskiyou County,41.6037750855165,-122.845652629893
+Scott Valley Unified,Fort Jones Elementary,11501 Mathews Street Fort Jones CA 96032,8.27,ppb,TRUE,tested,Fort Jones,Siskiyou County,41.6037750855165,-122.845652629893
 Scott Valley Unified,Scott River High,450 Campus Way B Etna CA 96027,NA,NA,FALSE,tested,NA,NA,NA,NA
 Scott Valley Unified,Scott Valley Adult,450 Campus Way Etna CA 96027-0059,NA,NA,NA,not tested,NA,NA,NA,NA
 Scott Valley Unified,Scott Valley Junior High,237 Butte Street Fort Jones CA 96032-0607,NA,NA,NA,not tested,Fort Jones,Siskiyou County,41.609119,-122.842254
